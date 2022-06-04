@@ -1,33 +1,29 @@
 <template>
   <Header />
+  <Title />
+  <Controller />
   <Input />
   <List />
   <Footer />
 </template>
 
 <script>
-import Header from "~/components/Header"
-import Input from "~/components/Input"
-import List from "~/components/List"
-import Footer from "~/components/Footer"
+import Header from "~/components/TodoHeader";
+import Title from "~/components/TodoTitle";
+import Controller from "~/components/TodoController";
+import Input from "~/components/TodoInput";
+import List from "~/components/TodoList";
+import Footer from "~/components/TodoFooter";
 
 export default {
+  name: "App",
   components: {
     Header,
+    Title,
+    Controller,
     Input,
     List,
     Footer
-  },
-  data() {
-    return {
-      message: 'Hello Vue!'
-    }
-  },
-  methods: {
-    handler() {
-      console.log(this.message)
-      this.message += '!'
-    }
   }
 }
 </script>
