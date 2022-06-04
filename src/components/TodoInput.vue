@@ -3,19 +3,18 @@
     <input
       type="text"
       class="add__input"
-      placeholder="Enter your task"
+      placeholder="Enter를 눌러주세요"
       v-model="newTodoItem"
-      @keyup.enter="addTodoItem()" />
-    <button
+      @keypress="addTodoItem" />
+    <!-- <button
       class="add_button"
-      @click="addTodoItem()">
+      @click="addTodoItem">
       <span class="blind">추가</span>
-    </button>
+    </button> -->
   </div>
 </template>
 
 <script>
-import getDate from "~/commonJS/getDate"
 
 export default {
   data() {
@@ -23,16 +22,11 @@ export default {
       newTodoItem: ""
     }
   },
+  emits: ["addItem"],
   methods: {
     addTodoItem() {
       if (this.newTodoItem !== "") {
-        var value = {
-          item: this.newTodoItem,
-          date: `${getDate().date}/${getDate().week}`,
-          time: getDate().time,
-          completed: false
-        }
-        localStorage.setItem(this.newTodoItem, JSON.stringify(value))
+        this.$emit("addItem", this.newTodoItem)
         this.clearInput()
       }
     },

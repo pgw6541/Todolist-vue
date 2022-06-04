@@ -1,44 +1,48 @@
 <template>
-  <ul class="list">
+  <ul
+    class="list"
+    :class="listempty">
     <li
       class="list__item flex"
-      v-for="todoItem in todoItems"
-      :key="todoItem">
+      v-for="(todoItem, index) in propsdata"
+      :key="todoItem.item">
       <input
         type="checkbox"
-        :id="todoItem.item" />
+        :id="todoItem.item"
+        :checked="todoItem.completed === true"
+        @change="toggleComplete(todoItem)" />
       <label
         :for="todoItem.item"
         class="list__label">
         <p class="list__text">{{ todoItem.item }}</p>
       </label>
-
       <p class="list__date">
         {{ todoItem.date }}
       </p>
-
-      <!-- <button class="list__delete">
-        삭제하기
-      </button> -->
+      <button
+        class="list__delete"
+        @click="removeTodo(todoItem, index)">
+        X
+      </button>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      todoItems: []
-    };
+  props: ["propsdata", "propempty"],
+  emits: ["removeItem", "toggleItem"],
+  methods: {
+    removeTodo(todoItem, index) {
+      this.$emit("removeItem", todoItem, index)
+    },
+    toggleComplete(todoItem) {
+      this.$emit("toggleItem", todoItem)
+    }
   },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i ++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i))))
-        }
-      }
+  computed: {
+    listempty() {
+      return this.propempty ? "list--empty" : null
     }
   }
 }
@@ -49,5 +53,8 @@ export default {
   margin: 50px;
   padding: 20px;
   border: 1px solid #000;
+  .flex {
+  display: flex;
+}
 }
 </style>

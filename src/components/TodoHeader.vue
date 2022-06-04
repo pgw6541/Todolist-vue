@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <h1 class="logo">
-      GUNW Todo
+      ToDo.
     </h1>
     <p class="date">
       {{ timestamp }}
