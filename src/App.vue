@@ -1,10 +1,12 @@
 <template>
-  <Header />
-  <Title />
-  <Controller />
-  <Input />
-  <List />
-  <Footer />
+  <div class="container">
+    <Header />
+    <Title />
+    <Controller />
+    <Input />
+    <List />
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -28,8 +30,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .container {
     text-align: center;
+  }
+  .flex {
+    display: flex;
   }
 </style>
