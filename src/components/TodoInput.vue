@@ -5,7 +5,7 @@
       class="add__input"
       placeholder="Enter를 눌러주세요"
       v-model="newTodoItem"
-      @keypress="addTodoItem" />
+      @keypress.enter="addTodoItem" />
     <!-- <button
       class="add_button"
       @click="addTodoItem">

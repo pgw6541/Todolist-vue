@@ -1,11 +1,13 @@
 <template>
-  <ul
+  <transition-group
+    name="list"
+    tag="ul"
     class="list"
     :class="listempty">
     <li
       class="list__item flex"
-      v-for="(todoItem, index) in propsdata"
-      :key="todoItem.item">
+      v-for="(todoItem, index) in this.$store.state.store.todoItems"
+      :key="todoItem">
       <input
         type="checkbox"
         :id="todoItem.item"
@@ -25,7 +27,7 @@
         X
       </button>
     </li>
-  </ul>
+  </transition-group>
 </template>
 
 <script>
@@ -55,6 +57,18 @@ export default {
   border: 1px solid #000;
   .flex {
   display: flex;
+  }
 }
+.list-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.list-enter-active,
+.list-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>
