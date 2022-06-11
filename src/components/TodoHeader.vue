@@ -27,15 +27,15 @@ export default {
   header {
     width: 100%;
     height: 100px;
-    background-color: $gray-700;
+    background: linear-gradient(to right, yellow, red);
     display: flex;
     justify-content: space-around;
-    align-items: center;
     .logo {
-
+      font-weight: bold;
+      align-self: center;
     }
     .date {
-
+      align-self: flex-end;
     }
   }
 </style>

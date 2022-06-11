@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <p class="title__te">
+    <p class="title__text">
       <span class="title__message">
         {{ message }}&nbsp;
       </span>
@@ -57,3 +57,24 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.title {
+  padding: 50px 0 50px;
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(to right, yellowgreen, skyblue);
+  .title__text {
+    .title__message {}
+    .title__name {}
+  }
+  .title__task {
+    .title__task-top {}
+    .title__task-count {}
+    .title__task-left {}
+    .title__task-total {}
+    .title__task-bottom {}
+    .title__task-info {}
+  }
+}
+</style>
