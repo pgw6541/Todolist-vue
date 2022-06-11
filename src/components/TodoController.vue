@@ -6,13 +6,13 @@
         name="order"
         id="order"
         class="selectbox"
-        v-model="selected"
+        v-model="onePick"
         @change="sortTodo">
-        <option value="date-asc">
-          오래된순
-        </option>
-        <option value="date-desc">
-          최신순
+        <option
+          v-for="sortOption in sortOptions"
+          :key="sortOption"
+          :value="sortOption.value">
+          {{ sortOption.txt }}
         </option>
       </select>
     </div>
@@ -26,10 +26,26 @@
 
 <script>
 export default {
+  data() {
+    return {
+      sortOptions: [
+        {
+          txt: "오래된순",
+          value: "date-asc"
+        },
+        {
+          txt: "최신순",
+          value: "date-desc"
+        },
+      ],
+      onePick : "date-asc"
+    }
+  },
   emits: ["sortItem", "clearAll"],
   methods: {
     sortTodo() {
-      this.$emit("sortItem", { value: this.selected })
+      this.$emit("sortItem", { value: this.onePick })
+      
     },
     clearTodo() {
       this.$emit("clearAll")

@@ -23,3 +23,19 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  header {
+    width: 100%;
+    height: 100px;
+    background-color: $gray-700;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .logo {
+
+    }
+    .date {
+
+    }
+  }
+</style>

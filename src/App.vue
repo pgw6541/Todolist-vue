@@ -15,19 +15,19 @@
         :prop-name="userName" />
       <TodoInput 
         @addItem="addOneItem" />
+      <TodoController
+        @sortItem="sortAllItem"
+        @clearAll="clearAllItem" />
+      <TodoList 
+        :propsdata="todoItems"
+        :propempty="isEmpty"
+        @removeItem="removeOneItem"
+        @toggleItem="toggleOneItem" />
     </div>
     <div v-else>
       <TodoHello
         @addName="addUserName" />
     </div>
-    <TodoController
-      @sortItem="sortAllItem"
-      @clearAll="clearAllItem" />
-    <TodoList 
-      :propsdata="todoItems"
-      :propempty="isEmpty"
-      @removeItem="removeOneItem"
-      @toggleItem="toggleOneItem" />
     <TodoFooter />
   </div>
 </template>
@@ -66,7 +66,15 @@ export default {
   created() {
     this.userName = localStorage.getItem("userName")
 
-    
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) !== "userName") {
+          this.todoItems.push(
+            JSON.parse(localStorage.getItem(localStorage.key(i)))
+          )
+        }
+      }
+    }
   },
   methods: {
     addOneItem(todoItem) {
@@ -115,10 +123,10 @@ export default {
         return a.time - b.time;
       });
     },
-    sortAllItem(selectedSort) {
-      if (selectedSort.value === "date-desc") {
+    sortAllItem(onePick) {
+      if (onePick.value === "date-desc") {
         this.sortTodoLatest()
-      } else if (selectedSort.value === "date-asc") {
+      } else if (onePick.value === "date-asc") {
         this.sortTodoOldest()
       }
     },

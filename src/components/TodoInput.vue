@@ -25,7 +25,7 @@ export default {
   emits: ["addItem"],
   methods: {
     addTodoItem() {
-      if (this.newTodoItem !== "") {
+      if (this.newTodoItem !== "" || this.newTodoItem == "") {
         this.$emit("addItem", this.newTodoItem)
         this.clearInput()
       }

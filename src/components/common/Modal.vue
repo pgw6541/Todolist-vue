@@ -8,13 +8,12 @@
       <div class="modal__content">
         <p class="modal__text">
           <slot
-            name="modal-text">
-            (모달 내용)
-          </slot>
+            name="modal-text"></slot>
         </p>
         <button
           class="modal__close"
           @click="$emit('close')"
+          @keyup.enter="$emit('close')"
           tabindex="0">
           확인
         </button>
@@ -40,25 +39,5 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9;
-}
-.modal-enter {
-  opacity: 0;
-  .modal__content {
-    transform: translateY(30px);
-    transition: transform 0.6s;
-  }
-}
-.modal-enter-active {
-  transition: opacity 0.3s;
-}
-.modal-leave-active {
-  transition: opacity 0.3s 0.05s;
-}
-.modal-leave-to {
-  opacity: 0;
-  .modal__content {
-    transform: translateY(30px);
-    transition: transform 0.6s;
-  }
 }
 </style>
