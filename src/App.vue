@@ -62,7 +62,7 @@ export default {
       userName: "",
       showModal: false,
       modalText: "",
-      nowTime: {}
+      nowTime: ""
     };
   },
   created() {
@@ -77,9 +77,6 @@ export default {
         }
       }
     }
-    this.timeHours = `${getDate().hour < 10? "0" + getDate().hour: getDate().hour }`
-    this.timeMinutes = `${getDate().minutes}`
-    this.timeSeconds = `${getDate().seconds}`
   },
   methods: {
     addOneItem(todoItem) {
@@ -140,12 +137,27 @@ export default {
       this.userName = userName
     },
     realTime() {
-      this.nowTime = this.timeHours + ":" + this.timeMinutes + ":" + this.timeSeconds
+      this.nowTime = new Date().toLocaleTimeString('ko-KR', {
+        dataStyle: 'short',
+        hour: '2-digit',
+        hourCycle: 'h23',
+        minute: '2-digit',
+        second: '2-digit',
+      })
+      setInterval(() => {
+        this.nowTime = new Date().toLocaleTimeString('ko-KR', {
+          dataStyle: 'short',
+          hour: '2-digit',
+          hourCycle: 'h23',
+          minute: '2-digit',
+          second: '2-digit',
+        })
+      }, 1000)
     }
   },
   mounted() {
     this.sortTodoOldest()
-    setInterval(this.realTime(), 1000)
+    this.realTime()
   },
   computed: {
     checkCount() {
@@ -179,7 +191,6 @@ export default {
     border: 1px solid #2C78DB;
     box-shadow: 8px 16px 16px hsl(0deg 0% 0% / .25);
     border-radius: 50px;
-
     margin-top: 50px;
   }
 </style>

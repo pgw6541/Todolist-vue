@@ -54,5 +54,8 @@ header {
   }
   .week {
   }
+  .now__time {
+    font-size: 24px;
+  }
 }
 </style>

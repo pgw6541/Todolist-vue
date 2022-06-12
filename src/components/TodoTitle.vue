@@ -49,7 +49,7 @@ export default {
       }
     },
     handleName() {
-      this.$refs.test.blur()
+      this.blur()
     }
   },
   mounted() {

@@ -3,8 +3,6 @@ export default () => {
   const month = now.getMonth() + 1
   const day = now.getDate()
   var hour = now.getHours()
-  const minutes = now.getMinutes() < 10? "0" + now.getMinutes(): now.getMinutes()
-  const seconds = now.getSeconds() < 10? "0" + now.getSeconds(): now.getSeconds()
   const weekList = new Array(
     "월",
     "화",
@@ -18,8 +16,6 @@ export default () => {
   const week = weekList[now.getDay()]
   const time = now.getTime()
   let daytime = ""
-  hour = hour % 12
-  hour = hour ? hour : 12
   
 
   if (hour < 12) {
@@ -38,8 +34,6 @@ export default () => {
     time,
     daytime,
     hour,
-    minutes,
-    seconds,
     ampm
   }
   return dateInfo
