@@ -8,7 +8,8 @@
         {{ modalText }}
       </template>
     </Modal>
-    <TodoHeader />
+    <TodoHeader
+      :propstime="nowTime" />
     <div v-if="userName">
       <TodoTitle
         :propsdata="checkCount"
@@ -60,7 +61,8 @@ export default {
       todoItems: [],
       userName: "",
       showModal: false,
-      modalText: ""
+      modalText: "",
+      nowTime: {}
     };
   },
   created() {
@@ -75,6 +77,9 @@ export default {
         }
       }
     }
+    this.timeHours = `${getDate().hour < 10? "0" + getDate().hour: getDate().hour }`
+    this.timeMinutes = `${getDate().minutes}`
+    this.timeSeconds = `${getDate().seconds}`
   },
   methods: {
     addOneItem(todoItem) {
@@ -133,10 +138,14 @@ export default {
     addUserName(userName) {
       localStorage.setItem("userName", userName)
       this.userName = userName
+    },
+    realTime() {
+      this.nowTime = this.timeHours + ":" + this.timeMinutes + ":" + this.timeSeconds
     }
   },
   mounted() {
     this.sortTodoOldest()
+    setInterval(this.realTime(), 1000)
   },
   computed: {
     checkCount() {
@@ -166,5 +175,11 @@ export default {
 <style lang="scss" scoped>
   .container {
     text-align: center;
+    background-color: $white;
+    border: 1px solid #2C78DB;
+    box-shadow: 8px 16px 16px hsl(0deg 0% 0% / .25);
+    border-radius: 50px;
+
+    margin-top: 50px;
   }
 </style>
