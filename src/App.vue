@@ -1,13 +1,6 @@
 <template>
   <div
     class="container">
-    <Modal
-      v-show="showModal"
-      @close="showModal = false">
-      <template #modal-text>
-        {{ modalText }}
-      </template>
-    </Modal>
     <TodoHeader
       :propstime="nowTime" />
     <div v-if="userName">
@@ -18,7 +11,7 @@
         @addItem="addOneItem" />
       <TodoController
         @sortItem="sortAllItem"
-        @clearAll="clearAllItem" />
+        @allClear="StorageClearAll" />
       <TodoList 
         :propsdata="todoItems"
         :propempty="isEmpty"
@@ -30,6 +23,21 @@
         @addName="addUserName" />
     </div>
     <TodoFooter />
+    <Modal
+      v-show="showModal"
+      @close="showModal = false">
+      <template #modal-text>
+        {{ modalText }}
+      </template>
+    </Modal>
+    <ClearModal
+      v-show="clearModal"
+      @close="clearModal = false"
+      @clearAll="clearAllItem">
+      <template #modal-text>
+        {{ modalText }}
+      </template>
+    </ClearModal>
   </div>
 </template>
 
@@ -42,6 +50,7 @@ import TodoController from "~/components/TodoController";
 import TodoList from "~/components/TodoList";
 import TodoFooter from "~/components/TodoFooter";
 import Modal from "~/components/common/Modal";
+import ClearModal from "~/components/common/ClearModal";
 
 import getDate from "~/commonJS/getDate"
 
@@ -54,13 +63,15 @@ export default {
     TodoController,
     TodoList,
     TodoFooter,
-    Modal
+    Modal,
+    ClearModal
   },
   data() {
     return {
       todoItems: [],
       userName: "",
       showModal: false,
+      clearModal: false,
       modalText: "",
       nowTime: ""
     };
@@ -70,7 +81,12 @@ export default {
 
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "userName") {
+        if (
+          localStorage.key(i) !== "loglevel:webpack-dev-server" &&
+          localStorage.key(i) !== "csCursors" &&
+          localStorage.key(i) !== "csPointers" &&
+          localStorage.key(i) !== "userName"
+          ) {
           this.todoItems.push(
             JSON.parse(localStorage.getItem(localStorage.key(i)))
           )
@@ -96,7 +112,7 @@ export default {
       }
       var value = {
         item: todoItem,
-        date: `${getDate().date} ${getDate().week}`,
+        date: `${getDate().month}.${getDate().day}.${getDate().week}`,
         time: getDate().time,
         completed: false
       }
@@ -111,9 +127,18 @@ export default {
       todoItem.completed = !todoItem.completed
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
     },
+    addUserName(userName) {
+      localStorage.setItem("userName", userName)
+      this.userName = userName
+    },
     clearAllItem() {
       this.todoItems = []
       localStorage.clear()
+    },
+    StorageClearAll() {
+        this.clearModal = !this.clearModal;
+        this.modalText = "모든 데이터가 초기화 됩니다. 초기화 하시겠습니까?";
+        return false;
     },
     sortTodoLatest() {
       this.todoItems.sort(function(a, b) {
@@ -132,15 +157,11 @@ export default {
         this.sortTodoOldest()
       }
     },
-    addUserName(userName) {
-      localStorage.setItem("userName", userName)
-      this.userName = userName
-    },
     realTime() {
       this.nowTime = new Date().toLocaleTimeString('ko-KR', {
         dataStyle: 'short',
         hour: '2-digit',
-        hourCycle: 'h23',
+        hourCycle: 'h12',
         minute: '2-digit',
         second: '2-digit',
       })
@@ -148,7 +169,7 @@ export default {
         this.nowTime = new Date().toLocaleTimeString('ko-KR', {
           dataStyle: 'short',
           hour: '2-digit',
-          hourCycle: 'h23',
+          hourCycle: 'h12',
           minute: '2-digit',
           second: '2-digit',
         })

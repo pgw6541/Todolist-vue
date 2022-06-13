@@ -6,11 +6,11 @@
       placeholder="Enter를 눌러주세요"
       v-model="newTodoItem"
       @keypress.enter="addTodoItem" />
-    <!-- <button
+    <button
       class="add_button"
       @click="addTodoItem">
       <span class="blind">추가</span>
-    </button> -->
+    </button>
   </div>
 </template>
 

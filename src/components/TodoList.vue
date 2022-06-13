@@ -3,7 +3,7 @@
     class="list"
     :class="listempty">
     <li
-      class="list__item flex"
+      class="list__item"
       v-for="(todoItem, index) in propsdata"
       :key="todoItem.item">
       <input
@@ -53,8 +53,11 @@ export default {
   margin: 50px;
   padding: 20px;
   border: 1px solid #000;
-  .flex {
+  .list__item {
   display: flex;
-}
+    .list__label {
+      margin: 0 30px;
+    }
+  }
 }
 </style>

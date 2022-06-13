@@ -18,13 +18,15 @@ export default () => {
   let daytime = ""
   
 
-  if (hour < 12) {
-    daytime = '좋은 아침이에요 :)'
+  if (hour > 0 && hour < 5) {
+    daytime = '내일이 기대되네요 :)'
+  } else if (hour < 12) {
+    daytime = '오늘 하루도 화이팅 :)'
   } else if (hour < 18) {
     daytime = '나른한 오후에요 :)'
   } else {
-    daytime = '고요한 밤이에요 :)'
-  }
+    daytime = '좋은 밤이에요 :)'
+  } 
   
 
   const dateInfo = {

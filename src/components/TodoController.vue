@@ -18,8 +18,8 @@
     </div>
     <button
       class="clear"
-      @click="clearTodo">
-      모두 비우기
+      @click="clearModalShow">
+      초기화
     </button>
   </div>
 </template>
@@ -41,14 +41,13 @@ export default {
       onePick : "date-asc"
     }
   },
-  emits: ["sortItem", "clearAll"],
+  emits: ["sortItem", "allClear"],
   methods: {
     sortTodo() {
       this.$emit("sortItem", { value: this.onePick })
-      
     },
-    clearTodo() {
-      this.$emit("clearAll")
+    clearModalShow() {
+      this.$emit("allClear")
     }
   }
 }
