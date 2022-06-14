@@ -1,16 +1,15 @@
 <template>
   <header class="header">
     <div class="month">
-      {{ timemonth }}월
+      {{ timemonth }}월&nbsp;
     </div>
     <div class="day">
-      {{ timeday }}일
+      {{ timeday }}일&nbsp;
     </div>
     <div class="week">
-      {{ timeweek }}요일
+      {{ timeweek }}요일&nbsp;/&nbsp;
     </div>
     <div class="now__time">
-      {{ ampm }}
       {{ this.propstime }}
     </div>
   </header>
@@ -33,7 +32,6 @@ export default {
     this.timeday = `${getDate().day}`
     this.timemonth = `${getDate().month}`
     this.timeweek = `${getDate().week}`
-    this.ampm = `${getDate().ampm}`
     // this.timeHours = `${getDate().hour < 10? "0" + getDate().hour: getDate().hour }`
     // this.timeMinutes = `${getDate().minutes}`
     // this.timeSeconds = `${getDate().seconds}`
@@ -44,18 +42,16 @@ export default {
 <style lang="scss" scoped>
 header {
   height: 200px;
-  font-size: 56px;
+  margin: 20px 20px 0 0;
+  font-size: 16px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
   .day {
   }
   .month {
   }
   .week {
-  }
-  .now__time {
-    font-size: 24px;
   }
 }
 </style>
