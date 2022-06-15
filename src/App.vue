@@ -112,7 +112,7 @@ export default {
       }
       var value = {
         item: todoItem,
-        date: `${getDate().month}.&nbsp;${getDate().day}.&nbsp;${getDate().week}`,
+        date: `${getDate().month}.${getDate().day}. ${getDate().week}`,
         time: getDate().time,
         completed: false
       }
