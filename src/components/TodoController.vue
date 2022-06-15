@@ -1,26 +1,27 @@
 <template>
   <div class="ctrl">
-    <div class="select">
-      <label for="order">Order</label>
-      <select
-        name="order"
-        id="order"
-        class="selectbox"
-        v-model="onePick"
-        @change="sortTodo">
-        <option
-          v-for="sortOption in sortOptions"
-          :key="sortOption"
-          :value="sortOption.value">
-          {{ sortOption.txt }}
-        </option>
-      </select>
+    <div class="in__container">
+      <div class="select">
+        <select
+          name="order"
+          id="order"
+          class="selectbox"
+          v-model="onePick"
+          @change="sortTodo">
+          <option
+            v-for="sortOption in sortOptions"
+            :key="sortOption"
+            :value="sortOption.value">
+            {{ sortOption.txt }}
+          </option>
+        </select>
+      </div>
+      <button
+        class="clear"
+        @click="clearModalShow">
+        초기화
+      </button>
     </div>
-    <button
-      class="clear"
-      @click="clearModalShow">
-      초기화
-    </button>
   </div>
 </template>
 
@@ -52,3 +53,22 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.ctrl {
+  .in__container {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .select {
+      .selectbox {
+
+      }
+    }
+    button.clear {
+      background-color: $white;
+      padding: 5px;
+    }
+  }
+}
+</style>

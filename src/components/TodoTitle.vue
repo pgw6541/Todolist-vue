@@ -1,27 +1,29 @@
 <template>
   <div class="title">
-    <p class="title__text">
-      <span class="title__message">
-        {{ message }}&nbsp;
-      </span>
-      <span
-        @keyup.enter="handleName"
-        @blur="handleBlur"
-        class="title__name"
-        ref="test"
-        contenteditable="true">
-        {{ propName }}
-      </span>
-    </p>
-    <p class="title__task">
-      <span class="title__task-top"></span>
-      <span class="title__task-count">
-        <em class="title__task-left">{{ propsdata.left }}&nbsp;</em>
-        <em class="titme__task-slash">/</em>
-        <em class="title__task-total">&nbsp;{{ propsdata.total }}</em>
-      </span>
-      <span class="title__task-info"></span>
-    </p>
+    <div class="in__container">
+      <p class="title__text">
+        <span class="title__message">
+          {{ message }}<span class="ntt">&nbsp;&#58;&#41;&nbsp;</span> <!--ntt코드 :) -->
+        </span>
+        <span
+          @keyup.enter="handleName"
+          @blur="handleBlur"
+          class="title__name"
+          ref="test"
+          contenteditable="true">
+          {{ propName }}
+        </span>
+      </p>
+      <p class="title__task">
+        <span class="title__task-top"></span>
+        <span class="title__task-count">
+          <em class="title__task-left">남은&nbsp;{{ propsdata.left }}</em>
+          <!-- <em class="titme__task-slash">/</em> --><br />
+          <em class="title__task-total">전체&nbsp;{{ propsdata.total }}</em>
+        </span>
+        <span class="title__task-info"></span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -60,21 +62,28 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  padding: 50px 0 50px;
-  display: flex;
-  justify-content: space-around;
-  // background: linear-gradient(to right, yellowgreen, skyblue);
-  .title__text {
-    .title__message {}
-    .title__name {}
-  }
-  .title__task {
-    .title__task-top {}
-    .title__task-count {}
-    .title__task-left {}
-    .title__task-total {}
-    .title__task-bottom {}
-    .title__task-info {}
+  padding: 50px 0;
+  .in__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title__text {
+      font-size: 52px;
+      .title__message {
+        .ntt {}
+      }
+      .title__name {}
+    }
+    .title__task {
+      font-size: 36px;
+      span.title__task-top {}
+      span.title__task-count {
+        em.title__task-left {}
+        em.title__task-slash {}
+        em.title__task-total {}
+      }
+      span.title__task-info {}
+    }
   }
 }
 </style>

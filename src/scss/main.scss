@@ -15,6 +15,11 @@ $container-max-widths: (
   xxl: 1320px
 );
 
+.in__container {
+  width: 70%;
+  margin: 0 auto;
+};
+
 // Required
 @import "../../node_modules/bootstrap/scss/functions";
 

@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <div class="hello">
-      What is your name?
+  <div class="helloCtn">
+    <div>
+      <div class="hello">
+        사용자 이름을 입력해주세요
+      </div>
+      <!-- <label for="user-name"></label> -->
+      <input
+        type="text"
+        id="user-name"
+        v-model="userName"
+        @keyup.enter="addUserName()" />
     </div>
-    <label for="user-name">Name</label>
-    <input
-      type="text"
-      id="user-name"
-      v-model="userName"
-      @keyup.enter="addUserName()" />
   </div>
 </template>
 
@@ -27,3 +29,17 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.helloCtn {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .hello {
+    padding-bottom: 20px;
+  }
+  input#user-name {
+    font-size: 24px;
+  }
+}
+</style>

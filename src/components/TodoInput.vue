@@ -1,16 +1,18 @@
 <template>
   <div class="add">
-    <input
-      type="text"
-      class="add__input"
-      placeholder="Enter를 눌러주세요"
-      v-model="newTodoItem"
-      @keypress.enter="addTodoItem" />
-    <button
-      class="add_button"
-      @click="addTodoItem">
-      <span class="blind">추가</span>
-    </button>
+    <div class="in__container">
+      <input
+        type="text"
+        class="add__input"
+        placeholder="Enter를 눌러주세요"
+        v-model="newTodoItem"
+        @keypress.enter="addTodoItem" />
+      <button
+        class="add__button"
+        @click="addTodoItem">
+        <span class="blind">추가</span>
+      </button>
+    </div> 
   </div>
 </template>
 
@@ -36,3 +38,27 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.add {
+  padding-bottom: 50px;
+  .in__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .add__input {
+      width: 90%;
+      min-width: 340px;
+      height: 48px;
+      margin-right: 20px;
+      padding-left: 10px;
+      border: 3px solid $black;
+      border-radius: 5px;
+    }
+    button.add__button {
+      width: 10%;
+      height: 48px;
+      border: 1px solid #000;
+    }
+  }
+}
+</style>

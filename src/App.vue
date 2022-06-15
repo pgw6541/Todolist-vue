@@ -112,7 +112,7 @@ export default {
       }
       var value = {
         item: todoItem,
-        date: `${getDate().month}.${getDate().day}.${getDate().week}`,
+        date: `${getDate().month}.&nbsp;${getDate().day}.&nbsp;${getDate().week}`,
         time: getDate().time,
         completed: false
       }
@@ -209,9 +209,44 @@ export default {
   .container {
     text-align: center;
     background-color: $white;
-    border: 1px solid #2C78DB;
     box-shadow: 8px 16px 16px hsl(0deg 0% 0% / .25);
-    border-radius: 50px;
     margin-top: 50px;
+    --border-width: 3px;
+
+    position: relative;
+    font-family: Lato, sans-serif;
+    text-transform: uppercase;
+    border-radius: var(--border-width);
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: calc(-1 * var(--border-width));
+      left: calc(-1 * var(--border-width));
+      z-index: -1;
+      width: calc(100% + var(--border-width) * 2);
+      height: calc(100% + var(--border-width) * 2);
+      background: linear-gradient(
+        60deg,
+        hsl(224, 85%, 66%),
+        hsl(269, 85%, 66%),
+        hsl(314, 85%, 66%),
+        hsl(359, 85%, 66%),
+        hsl(44, 85%, 66%),
+        hsl(89, 85%, 66%),
+        hsl(134, 85%, 66%),
+        hsl(179, 85%, 66%)
+      );
+      background-size: 300% 300%;
+      background-position: 0 50%;
+      border-radius: calc(2 * var(--border-width));
+      animation: moveGradient 4s alternate infinite;
+    }
   }
+  @keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 </style>

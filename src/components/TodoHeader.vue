@@ -1,16 +1,21 @@
 <template>
   <header class="header">
-    <div class="month">
-      {{ timemonth }}월&nbsp;
+    <div class="title">
+      <p>My Todolist.</p>
     </div>
-    <div class="day">
-      {{ timeday }}일&nbsp;
-    </div>
-    <div class="week">
-      {{ timeweek }}요일&nbsp;/&nbsp;
-    </div>
-    <div class="now__time">
-      {{ this.propstime }}
+    <div class="date">
+      <div class="month">
+        {{ timemonth }}월&nbsp;
+      </div>
+      <div class="day">
+        {{ timeday }}일&nbsp;
+      </div>
+      <div class="week">
+        {{ timeweek }}요일&nbsp;/&nbsp;
+      </div>
+      <div class="now__time">
+        {{ this.propstime }}
+      </div>
     </div>
   </header>
 </template>
@@ -32,26 +37,32 @@ export default {
     this.timeday = `${getDate().day}`
     this.timemonth = `${getDate().month}`
     this.timeweek = `${getDate().week}`
-    // this.timeHours = `${getDate().hour < 10? "0" + getDate().hour: getDate().hour }`
-    // this.timeMinutes = `${getDate().minutes}`
-    // this.timeSeconds = `${getDate().seconds}`
   },
   props: ["propstime"]
 }
 </script>
 <style lang="scss" scoped>
 header {
-  height: 200px;
-  margin: 20px 20px 0 0;
-  font-size: 16px;
+  height: 50px;
+  font-size: 18px;
+  margin: 0 40px;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  .day {
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-weight: bold;
+    font-family: 'Itim', sans-serif;
+    p {
+      margin-bottom: 0;
+    }
   }
-  .month {
-  }
-  .week {
+  .date {
+    display: flex;
+    justify-content: flex-end;
+    .day {}
+    .month {}
+    .week {}
+    .now__time {}
   }
 }
 </style>
