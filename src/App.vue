@@ -232,45 +232,52 @@ export default {
   padding-right: 0;
   padding-left: 0;
   
-  position: relative;
-  text-transform: uppercase;
-  border-radius: var(--border-width);
+  // position: relative;
+  // text-transform: uppercase;
+  // border-radius: var(--border-width);
 
-  &::after {
-    position: absolute;
-    content: "";
-    top: calc(-1 * var(--border-width));
-    left: calc(-1 * var(--border-width));
-    z-index: -1;
-    width: calc(100% + var(--border-width) * 2);
-    height: calc(100% + var(--border-width) * 2);
-    background: linear-gradient(
-      60deg,
-      hsl(224, 85%, 66%),
-      hsl(269, 85%, 66%),
-      hsl(314, 85%, 66%),
-      hsl(359, 85%, 66%),
-      hsl(44, 85%, 66%),
-      hsl(89, 85%, 66%),
-      hsl(134, 85%, 66%),
-      hsl(179, 85%, 66%)
-    );
-    background-size: 300% 300%;
-    background-position: 0 50%;
-    border-radius: calc(2 * var(--border-width));
-    animation: moveGradient 4s alternate infinite;
-  }
+  // &::after {
+  //   position: absolute;
+  //   content: "";
+  //   top: calc(-1 * var(--border-width));
+  //   left: calc(-1 * var(--border-width));
+  //   z-index: -1;
+  //   width: calc(100% + var(--border-width) * 2);
+  //   height: calc(100% + var(--border-width) * 2);
+  //   background: linear-gradient(
+  //     60deg,
+  //     hsl(224, 85%, 66%),
+  //     hsl(269, 85%, 66%),
+  //     hsl(314, 85%, 66%),
+  //     hsl(359, 85%, 66%),
+  //     hsl(44, 85%, 66%),
+  //     hsl(89, 85%, 66%),
+  //     hsl(134, 85%, 66%),
+  //     hsl(179, 85%, 66%)
+  //   );
+  //   background-size: 300% 300%;
+  //   background-position: 0 50%;
+  //   border-radius: calc(2 * var(--border-width));
+  //   animation: moveGradient 4s alternate infinite;
+  // }
+  // @keyframes moveGradient {
+  //   50% {
+  //     background-position: 100% 50%;
+  //   }
+  // }
   .bgc_gr {
     background: linear-gradient(-45deg, #BB82FA, #7C7AF0, #A2CBFA);
     color: $white;
   }
   .bottom_bgc {
-    background-color: $gray-200;
+    // background-color: $white;
+    // background-color: $gray-200;
+    background-color: #F6F6FF;
   }
-}
-@keyframes moveGradient {
-  50% {
-    background-position: 100% 50%;
+  @include media-breakpoint-down(md) {
+    margin-top: 0;
+    margin-bottom: 0;
+    box-shadow: none;
   }
 }
 
