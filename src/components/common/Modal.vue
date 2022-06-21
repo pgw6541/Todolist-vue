@@ -31,13 +31,28 @@ export default {
 <style lang="scss" scoped>
 .modal_v {
   width: 300px;
-  height: 100px;
-  padding: 50px;
-  background-color: darkslateblue;
+  height: 150px;
+  background-color: rgba(255,255,255,.7);
+  backdrop-filter: blur(3px);
+  border: 3px solid $gray-200;
+  border-radius: 10px;
   position: fixed;
-  top: 50px;
+  top: 25%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 9;
+  .modal__text {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+  .modal__close {
+    color: $gray-600;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    &:hover {
+      color: $black;
+    }
+  }
 }
 </style>

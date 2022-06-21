@@ -46,18 +46,17 @@ export default {
     justify-content: center;
     align-items: center;
     .add__input {
-      width: 90%;
-      min-width: 340px;
+      width: 80%;
       height: 48px;
       margin-right: 20px;
       padding-left: 10px;
-      border: 3px solid $black;
+      border: none;
       border-radius: 5px;
     }
     button.add__button {
-      width: 10%;
+      width: 20%;
       height: 48px;
-      border: 1px solid #000;
+      border: none;
     }
   }
 }

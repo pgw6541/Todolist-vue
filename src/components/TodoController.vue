@@ -56,18 +56,27 @@ export default {
 <style lang="scss" scoped>
 .ctrl {
   .in__container {
-    height: 50px;
+    height: 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .select {
       .selectbox {
-
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
       }
     }
     button.clear {
+      color: $gray-500;
       background-color: $white;
-      padding: 5px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      transition: all .2s;
+      &:hover {
+        color: $black;
+      }
     }
   }
 }

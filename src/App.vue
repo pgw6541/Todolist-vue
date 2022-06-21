@@ -113,7 +113,7 @@ export default {
       for (let i = 0; i < this.todoItems.length; i++) {
         if (this.todoItems[i].item === todoItem) {
           this.showModal = !this.showModal
-          this.modalText = "목록에 이미있습니다!"
+          this.modalText = "목록에 이미 있습니다!"
           return false
         }
       }

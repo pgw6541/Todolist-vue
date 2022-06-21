@@ -24,7 +24,8 @@
         <button
           class="list__delete"
           @click="removeTodo(todoItem, index)">
-          X
+          <!-- X -->
+          <span class="material-symbols-outlined">delete_forever</span>
         </button>
       </li>
     </ul>
@@ -60,7 +61,7 @@ export default {
       width: 100%;
       height: 50px;
       margin-bottom: 20px;
-      padding-right: 20px;
+      // padding-right: 20px;
       background-color: #fff;
       border-radius: 5px;
       display: flex;
@@ -85,8 +86,9 @@ export default {
       .list__date {
         flex-grow: 3;
       }
-      button {
-        width: 36px;
+      .list__delete {
+        border: none;
+        background-color: $white;
       }
     }
   }
