@@ -95,6 +95,7 @@ export default {
     }
   },
   methods: {
+    // addItem
     addOneItem(todoItem) {
       // 빈 내용
       if (todoItem === '') {
@@ -119,37 +120,33 @@ export default {
       localStorage.setItem(todoItem, JSON.stringify(value))
       this.todoItems.push(value)
     },
+    // removeItem
     removeOneItem(todoItem, index) {
       localStorage.removeItem(todoItem.item)
       this.todoItems.splice(index, 1)
     },
+    // toggleItem
     toggleOneItem(todoItem) {
       todoItem.completed = !todoItem.completed
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
     },
+    // addName
     addUserName(userName) {
       localStorage.setItem("userName", userName)
       this.userName = userName
     },
+    // clearAll
     clearAllItem() {
       this.todoItems = []
       localStorage.clear()
     },
+    // allClear
     StorageClearAll() {
         this.clearModal = !this.clearModal;
         this.modalText = "모든 데이터가 초기화 됩니다. 초기화 하시겠습니까?";
         return false;
     },
-    sortTodoLatest() {
-      this.todoItems.sort(function(a, b) {
-        return b.time - a.time;
-      });
-    },
-    sortTodoOldest() {
-      this.todoItems.sort(function(a, b) {
-        return a.time - b.time;
-      });
-    },
+    // sortItem
     sortAllItem(onePick) {
       if (onePick.value === "date-desc") {
         this.sortTodoLatest()
@@ -157,6 +154,19 @@ export default {
         this.sortTodoOldest()
       }
     },
+    // sortAllItem()
+    sortTodoLatest() {
+      this.todoItems.sort(function(a, b) {
+        return b.time - a.time;
+      });
+    },
+    // sortAllItem()
+    sortTodoOldest() {
+      this.todoItems.sort(function(a, b) {
+        return a.time - b.time;
+      });
+    },
+    // propstime="nowTime"
     realTime() {
       this.nowTime = new Date().toLocaleTimeString('ko-KR', {
         dataStyle: 'short',
