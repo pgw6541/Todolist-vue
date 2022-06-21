@@ -41,5 +41,12 @@ export default {
   input#user-name {
     font-size: 24px;
   }
+  @include media-breakpoint-down(md) {
+    height: calc(100vh - 50px);
+    input#user-name {
+      font-size: 16px;
+      height: 36px;
+    }
+  }
 }
 </style>
