@@ -92,9 +92,6 @@ export default {
           display: block;
           margin-bottom: 5px;
         }
-        .title__name {
-          display: block;
-        }
       }
     }
   }
@@ -108,8 +105,6 @@ export default {
           font-size: 24px;
         }
         .title__name {
-          display: block;
-          width: 100%;
           font-size: 24px;
         }
       }
