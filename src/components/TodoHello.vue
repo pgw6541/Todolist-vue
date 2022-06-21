@@ -10,6 +10,11 @@
         id="user-name"
         v-model="userName"
         @keyup.enter="addUserName()" />
+      <button
+        class="btn__addName"
+        @click="addUserName()">
+        반가워요&nbsp;&#58;&#41;
+      </button>
     </div>
   </div>
 </template>
@@ -40,6 +45,15 @@ export default {
   }
   input#user-name {
     font-size: 24px;
+  }
+  .btn__addName {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: $white;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
   }
   @include media-breakpoint-down(md) {
     height: calc(100vh - 50px);
