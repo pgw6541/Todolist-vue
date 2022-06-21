@@ -8,6 +8,7 @@
 <style lang="scss" scoped>
 .footer {
   font-size: 15px;
+  color: $gray-600;
   height: 100px;
   display: flex;
   justify-content: center;

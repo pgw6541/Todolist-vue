@@ -1,14 +1,24 @@
 <template>
   <div
     class="container">
-    <TodoHeader
-      :propstime="nowTime" />
-    <div v-if="userName">
-      <TodoTitle
-        :propsdata="checkCount"
-        :prop-name="userName" />
-      <TodoInput 
-        @addItem="addOneItem" />
+    <div class="bgc_gr">
+      <TodoHeader
+        :propstime="nowTime" />
+      <div v-if="userName">
+        <TodoTitle
+          :propsdata="checkCount"
+          :prop-name="userName" />
+        <TodoInput 
+          @addItem="addOneItem" />
+      </div>
+      <div v-else>
+        <TodoHello
+          @addName="addUserName" />
+      </div>
+    </div>
+    <div
+      class="bottom_bgc"
+      v-if="userName">
       <TodoController
         @sortItem="sortAllItem"
         @allClear="StorageClearAll" />
@@ -17,12 +27,8 @@
         :propempty="isEmpty"
         @removeItem="removeOneItem"
         @toggleItem="toggleOneItem" />
+      <TodoFooter />
     </div>
-    <div v-else>
-      <TodoHello
-        @addName="addUserName" />
-    </div>
-    <TodoFooter />
     <Modal
       v-show="showModal"
       @close="showModal = false">
@@ -216,44 +222,53 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    text-align: center;
-    background-color: $white;
-    box-shadow: 8px 16px 16px hsl(0deg 0% 0% / .25);
-    margin-top: 50px;
-    --border-width: 3px;
+.container {
+  text-align: center;
+  background-color: $white;
+  box-shadow: 8px 16px 16px hsl(0deg 0% 0% / .25);
+  margin-top: 50px;
+  margin-bottom: 100px;
+  --border-width: 3px;
+  padding-right: 0;
+  padding-left: 0;
+  
+  position: relative;
+  text-transform: uppercase;
+  border-radius: var(--border-width);
 
-    position: relative;
-    font-family: Lato, sans-serif;
-    text-transform: uppercase;
-    border-radius: var(--border-width);
-
-    &::after {
-      position: absolute;
-      content: "";
-      top: calc(-1 * var(--border-width));
-      left: calc(-1 * var(--border-width));
-      z-index: -1;
-      width: calc(100% + var(--border-width) * 2);
-      height: calc(100% + var(--border-width) * 2);
-      background: linear-gradient(
-        60deg,
-        hsl(224, 85%, 66%),
-        hsl(269, 85%, 66%),
-        hsl(314, 85%, 66%),
-        hsl(359, 85%, 66%),
-        hsl(44, 85%, 66%),
-        hsl(89, 85%, 66%),
-        hsl(134, 85%, 66%),
-        hsl(179, 85%, 66%)
-      );
-      background-size: 300% 300%;
-      background-position: 0 50%;
-      border-radius: calc(2 * var(--border-width));
-      animation: moveGradient 4s alternate infinite;
-    }
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 4s alternate infinite;
   }
-  @keyframes moveGradient {
+  .bgc_gr {
+    background: linear-gradient(-45deg, #BB82FA, #7C7AF0, #A2CBFA);
+    color: $white;
+  }
+  .bottom_bgc {
+    background-color: $gray-200;
+  }
+}
+@keyframes moveGradient {
   50% {
     background-position: 100% 50%;
   }

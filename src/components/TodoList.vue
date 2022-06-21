@@ -54,12 +54,20 @@ export default {
 <style lang="scss" scoped>
 .list {
   .in__container {
-    border: 3px solid $black;
-    padding: 20px;
+    padding-left: 0;
+    min-height: 300px;
     .list__item {
       width: 100%;
-      display: flex;
+      height: 50px;
       margin-bottom: 20px;
+      padding-right: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      p {
+        margin: 0;
+      }
       &:last-child {
         margin-bottom: 0;
       }

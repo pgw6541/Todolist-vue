@@ -31,9 +31,9 @@ export default {
   emits: ["close","clearAll"],
   methods: {
     clearTodo() {
-      this.$emit("clearAll")
       // 초기화 후 새로고침
       location.reload()
+      this.$emit("clearAll")
     }
   }
 }

@@ -10,6 +10,7 @@
           @blur="handleBlur"
           class="title__name"
           ref="test"
+          spellcheck="false"
           contenteditable="true">
           {{ propName }}
         </span>
@@ -69,6 +70,7 @@ export default {
     align-items: center;
     .title__text {
       font-size: 52px;
+      font-weight: bold;
       .title__message {
         .ntt {}
       }
