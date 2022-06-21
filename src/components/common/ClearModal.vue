@@ -53,7 +53,7 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 9;
   .modal__text {
-    width: 70%;
+    width: 200px;
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 30px;
@@ -69,6 +69,13 @@ export default {
     &:hover {
       color: $black;
     }
+  }
+  @include media-breakpoint-down(md) {
+    top: 50%;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 230px;
+    height: 170px;
   }
 }
 </style>

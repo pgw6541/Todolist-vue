@@ -6,21 +6,19 @@
           {{ message }}<span class="ntt">&nbsp;&#58;&#41;&nbsp;</span> <!--ntt코드 :) -->
         </span>
         <span
-          @keyup.enter="handleName"
+          @keydown.enter="handleName"
           @blur="handleBlur"
           class="title__name"
           ref="test"
           spellcheck="false"
           contenteditable="true">
-          {{ propName }}
+          {{ propname }}
         </span>
       </p>
       <p class="title__task">
-        <span class="title__task-top"></span>
         <span class="title__task-count">
           <em class="title__task-left">{{ propsdata.left }}<br /></em>
           <em class="titme__task-today">오늘 할 일</em>
-          <!-- <em class="title__task-total">전체&nbsp;{{ propsdata.total }}</em> -->
         </span>
         <span class="title__task-info"></span>
       </p>
@@ -32,7 +30,7 @@
 import getDate from "~/commonJS/getDate"
 
 export default {
-  props: ["propsdata", "propName"],
+  props: ["propsdata", "propname"],
   data() {
     return {
       message: ""
@@ -41,7 +39,7 @@ export default {
   emits: ["changeName"],
   methods: {
     handleBlur(e) {
-      const originalName = this.propName
+      const originalName = this.propname
       const newName = e.target.innerText
       if (newName !== originalName) {
         if (newName === "") {
@@ -52,7 +50,7 @@ export default {
       }
     },
     handleName() {
-      this.blur()
+      this.$refs.test.blur();
     }
   },
   mounted() {
@@ -72,22 +70,60 @@ export default {
     .title__text {
       font-size: 28px;
       font-weight: bold;
-      .title__message {
-        .ntt {}
-      }
+      .title__message {}
       .title__name {}
     }
     .title__task {
       font-size: 16px;
-      span.title__task-top {}
       span.title__task-count {
         em.title__task-left {
           font-size: 28px;
         }
         em.title__task-today {}
-        em.title__task-total {}
       }
       span.title__task-info {}
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .in__container {
+      display: block;
+      .title__text {
+        .title__message {
+          display: block;
+          margin-bottom: 5px;
+        }
+        .title__name {
+          display: block;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .in__container {
+      .title__text {
+        width: 100%;
+        .title__message {
+          display: block;
+          width: 100%;
+          font-size: 24px;
+        }
+        .title__name {
+          display: block;
+          width: 100%;
+          font-size: 24px;
+        }
+      }
+      .title__task {
+      font-size: 16px;
+      span.title__task-count {
+        em.title__task-left {
+          font-size: 36px;
+          font-weight: bold;
+        }
+        em.title__task-today {}
+      }
+      span.title__task-info {}
+    }
     }
   }
 }

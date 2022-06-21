@@ -7,7 +7,8 @@
       <div v-if="userName">
         <TodoTitle
           :propsdata="checkCount"
-          :prop-name="userName" />
+          :propname="userName"
+          @changeName="addUserName" />
         <TodoInput 
           @addItem="addOneItem" />
       </div>
@@ -279,6 +280,7 @@ export default {
     margin-bottom: 0;
     box-shadow: none;
   }
+  @include media-breakpoint-down(sm) {}
 }
 
 </style>

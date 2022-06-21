@@ -4,13 +4,13 @@
       <input
         type="text"
         class="add__input"
-        placeholder="Enter를 눌러주세요"
+        placeholder="Enter를 눌러주세요."
         v-model="newTodoItem"
         @keypress.enter="addTodoItem" />
       <button
         class="add__button"
         @click="addTodoItem">
-        <span class="blind">추가</span>
+        <span class="material-symbols-outlined">add</span>
       </button>
     </div> 
   </div>
@@ -21,10 +21,18 @@
 export default {
   data() {
     return {
-      newTodoItem: ""
+      newTodoItem: "",
     }
   },
   emits: ["addItem"],
+  created() {
+    const reps = window.matchMedia("screen and (max-width: 612px)")
+    if(reps.matches) {
+      console.log("모바일 사이즈")
+    } else {
+      console.log("모바일 사이즈 아닙니다.")
+    }
+  },
   methods: {
     addTodoItem() {
       if (this.newTodoItem !== "" || this.newTodoItem == "") {
@@ -56,7 +64,18 @@ export default {
     button.add__button {
       width: 20%;
       height: 48px;
+      background: $white;
       border: none;
+      border-radius: 5px;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .in__container {
+      .add__input {
+        &::placeholder {
+          font-size: 0;
+        }
+      }
     }
   }
 }

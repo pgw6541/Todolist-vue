@@ -15,8 +15,11 @@
           @change="toggleComplete(todoItem)" />
         <label
           :for="todoItem.item"
-          class="list__label">
-          <p class="list__text">{{ todoItem.item }}</p>
+          class="list__label"
+          spellcheck="false">
+          <p
+            class="list__text"
+            spellcheck="false">{{ todoItem.item }}</p>
         </label>
         <p class="list__date">
           {{ todoItem.date }}
@@ -59,7 +62,10 @@ export default {
     min-height: 300px;
     .list__item {
       width: 100%;
-      height: 50px;
+      min-height: 30px;
+      height: 100%;
+      padding: 10px 0;
+      padding-left: 10px;
       margin-bottom: 20px;
       // padding-right: 20px;
       background-color: #fff;
@@ -73,22 +79,68 @@ export default {
         margin-bottom: 0;
       }
       input {
-        flex-grow: 1;
+        width: 5%;
         &[type="checkbox"] {
           width: 17px;
           height: 17px;
         }
       }
       .list__label {
-        flex-grow: 6;
+        width: 70%;
         text-align: left;
+        margin-left: 10px;
       }
       .list__date {
-        flex-grow: 3;
+        width: 15%;
       }
       .list__delete {
+        width: 5%;
         border: none;
         background-color: $white;
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .in__container{
+      .list__item {
+        p {
+        }
+        &:last-child {
+        }
+        input {
+          width: 5%;
+        }
+        .list__label {
+          width: 65%;
+        }
+        .list__date {
+          width: 15%;
+        }
+        .list__delete {
+          width: 5%;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .in__container{
+      .list__item {
+        p {
+        }
+        &:last-child {
+        }
+        input {
+          width: 5%;
+        }
+        .list__label {
+          width: 50%;
+        }
+        .list__date {
+          width: 20%;
+        }
+        .list__delete {
+          width: 5%;
+        }
       }
     }
   }

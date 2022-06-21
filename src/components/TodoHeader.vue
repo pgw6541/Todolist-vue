@@ -11,10 +11,10 @@
         {{ timeday }}일&nbsp;
       </div>
       <div class="week">
-        {{ timeweek }}요일&nbsp;/&nbsp;
+        {{ timeweek }}요일
       </div>
       <div class="now__time">
-        {{ this.propstime }}
+        &nbsp;&nbsp;{{ this.propstime }}
       </div>
     </div>
   </header>
@@ -63,6 +63,20 @@ header {
     .month {}
     .week {}
     .now__time {}
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 15px;
+    margin: 0 20px;
+  }
+  @include media-breakpoint-down(sm) {
+    .title {
+      p {}
+    }
+    .date {
+      .now__time {
+        display: none;
+      }
+    }
   }
 }
 </style>
